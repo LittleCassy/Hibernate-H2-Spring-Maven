@@ -1,5 +1,7 @@
 package com.casandra.matricula.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,14 +11,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-
 public class StudentModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private int id;
-	
 	@Column
 	private String name;
 	@Column
@@ -24,19 +24,19 @@ public class StudentModel {
 	@Column
 	private int age;
 	@Column
-	private int[] subjects;
+	private List<Integer> matriculatedSubjects;
 
 	public StudentModel() {
 		
 	}
 
-	public StudentModel(int id, String name, String dni, int age, int[] subjects) {
+	public StudentModel(int id, String name, String dni, int age, List<Integer> matriculatedSubjects) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.dni = dni;
 		this.age = age;
-		this.subjects = subjects;
+		this.matriculatedSubjects = matriculatedSubjects;
 	}
 
 	public int getId() {
@@ -71,11 +71,13 @@ public class StudentModel {
 		this.age = age;
 	}
 
-	public int[] getSubjects() {
-		return subjects;
+	public List<Integer> getMatriculatedSubjects() {
+		return matriculatedSubjects;
 	}
 
-	public void setSubjects(int[] subjects) {
-		this.subjects = subjects;
+	public void setMatriculatedSubjects(List<Integer> matriculatedSubjects) {
+		this.matriculatedSubjects = matriculatedSubjects;
 	}
+	
+	
 }

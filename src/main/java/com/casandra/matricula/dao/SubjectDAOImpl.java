@@ -1,58 +1,60 @@
 package com.casandra.matricula.dao;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
+
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.casandra.matricula.model.StudentModel;
+import com.casandra.matricula.model.SubjectModel;
 
 @Repository
-public class StudentDAOImpl implements StudentDAO {
+public class SubjectDAOImpl implements SubjectDAO {
 
 	@Autowired
 	private EntityManager entityManager;
 	
 	@Override
-	public List<StudentModel> findAll() {
+	public List<SubjectModel> findAll() {
 		Session currentSession = entityManager.unwrap(Session.class);
-		Query<StudentModel> theQuery = currentSession.createQuery("from StudentModel ", StudentModel.class);
-		
-		List<StudentModel> students = theQuery.getResultList();
-		return students;
+		Query<SubjectModel> theQuery = currentSession.createQuery("from SubjectModel ", SubjectModel.class);
+		List<SubjectModel> subjects = theQuery.getResultList();
+		return subjects;
 	}
 
 	@Override
-	public StudentModel findById(int id) {
+	public SubjectModel findById(int id) {
 		Session currentSesion = entityManager.unwrap(Session.class);
-		StudentModel user = currentSesion.get(StudentModel.class, id);
-		
-		return user;
+		SubjectModel subject = currentSesion.get(SubjectModel.class, id);
+		return subject;
 	}
 
 	@Transactional
 	@Override
-	public void save(StudentModel student) {
+	public void save(SubjectModel subject) {
 		Session currentSession = entityManager.unwrap(Session.class);
-		currentSession.save(student);
+		currentSession.save(subject);
 	}
 
 	@Transactional
 	@Override
 	public void deleteById(int id) {
 		Session currentSession = entityManager.unwrap(Session.class);
-		Query<StudentModel> theQuery = currentSession.createQuery("delete from StudentModel where id=:id");
+		Query<SubjectModel> theQuery = currentSession.createQuery("delete from SubjectModel where id=:id");
 		theQuery.setParameter("id", id);
 		theQuery.executeUpdate();
 	}
 
 	@Transactional
 	@Override
-	public void update(StudentModel student) {
+	public void update(SubjectModel subject) {
 		Session curreSession = entityManager.unwrap(Session.class);
-		curreSession.merge(student);
+		curreSession.merge(subject);
 	}
 
 }

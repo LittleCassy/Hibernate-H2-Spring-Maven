@@ -23,45 +23,30 @@ public class StudentController {
 	@Autowired
 	private StudentServiceImpl userService;
 	
-	/*Este metodo se hara cuando por una peticion GET * (como indica la anotacion)
-	 * se llame a la url  http://127.0.0.1:8080/api//users */
-	
-	@GetMapping("/users")
+	@GetMapping("/centro/alumnos")
 	public List<StudentModel> findAll() {
 		return userService.findAll();
 	}
 	
-	/*Este metodo se hara cuando por una peticion GET * (como indica la anotacion)
-	 * se llame a la url + el id de un usuario http://127.0.0.1:8080/api//users/1*/
-	
-	@GetMapping("/users/{userId}")
+	@GetMapping("/centro/alumnos/{userId}")
 	public StudentModel getUser(@PathVariable int userId) {
 		StudentModel user = userService.findById(userId);
 		return user;
 	}
 	
-	/*Este metodo se hara cuando por una peticion POST * (como indica la anotacion)
-	 * se llame a la url + el id de un usuario http://127.0.0.1:8080/api//users*/
-	
-	@PostMapping("/users")
+	@PostMapping("/centro/alumnos/new")
 	public StudentModel addUser(@RequestBody StudentModel user) {
 		userService.save(user);
 		return user;
 	}
 	
-	/*Este metodo se hara cuando por una peticion PUT * (como indica la anotacion)
-	 * se llame a la url + el id de un usuario http://127.0.0.1:8080/api//users*/
-	
-	@PutMapping("/users")
+	@PutMapping("/centro/alumnos/update")
 	public StudentModel updateUser(@RequestBody StudentModel user) {
 		userService.update(user);
 		return user;
 	}
 	
-	/*Este metodo se hara cuando por una peticion DELETE * (como indica la anotacion)
-	 * se llame a la url + el id de un usuario http://127.0.0.1:8080/api//users/1*/
-	
-	@DeleteMapping("/users/{userId}")
+	@DeleteMapping("/centro/alumnos/{userId}")
 	public String deleteUser(@PathVariable int userId) {
 		StudentModel user = userService.findById(userId);
 		userService.deleteById(userId);

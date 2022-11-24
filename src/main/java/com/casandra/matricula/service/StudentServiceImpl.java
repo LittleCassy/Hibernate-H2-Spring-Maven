@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.casandra.matricula.dao.StudentDAO;
+import com.casandra.matricula.dao.StudentDAOImpl;
 import com.casandra.matricula.model.StudentModel;
 
 @Service
 public class StudentServiceImpl implements StudentService {
 
 	@Autowired
-	private StudentDAO studentDAO;
+	private StudentDAOImpl studentDAO;
 
 	@Override
 	public List<StudentModel> findAll() {
