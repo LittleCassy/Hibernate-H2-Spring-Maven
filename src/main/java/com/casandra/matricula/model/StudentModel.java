@@ -1,6 +1,6 @@
 package com.casandra.matricula.model;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,13 +24,13 @@ public class StudentModel {
 	@Column
 	private int age;
 	@Column
-	private List<Integer> matriculatedSubjects;
+	private ArrayList<Integer> matriculatedSubjects;
 
 	public StudentModel() {
 		
 	}
 
-	public StudentModel(int id, String name, String dni, int age, List<Integer> matriculatedSubjects) {
+	public StudentModel(int id, String name, String dni, int age, ArrayList<Integer> matriculatedSubjects) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -71,13 +71,11 @@ public class StudentModel {
 		this.age = age;
 	}
 
-	public List<Integer> getMatriculatedSubjects() {
+	public ArrayList<Integer> getMatriculatedSubjects() {
 		return matriculatedSubjects;
 	}
 
-	public void setMatriculatedSubjects(List<Integer> matriculatedSubjects) {
+	public void setMatriculatedSubjects(ArrayList<Integer> matriculatedSubjects) {
 		this.matriculatedSubjects = matriculatedSubjects;
 	}
-	
-	
 }

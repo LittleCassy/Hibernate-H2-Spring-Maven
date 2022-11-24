@@ -1,5 +1,6 @@
 package com.casandra.matricula.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,19 +21,19 @@ public class SubjectModel {
 	@Column
 	private String name;
 	@Column
-	private String studentsMatriculated;
+	private int studentsMatriculated;
 	@Column
-	private List<Integer> matriculatedStudents;
+	private ArrayList<Integer> studentsMatriculatedList;
 	
 	public SubjectModel() {
 
 	}
 
-	public SubjectModel(int id, String name, String studentsMatriculated, List<Integer> matriculatedStudents) {
+	public SubjectModel(int id, String name, int studentsMatriculated, ArrayList<Integer> studentsMatriculatedList) {
 		this.id = id;
 		this.name = name;
 		this.studentsMatriculated = studentsMatriculated;
-		this.matriculatedStudents = matriculatedStudents;
+		this.studentsMatriculatedList = studentsMatriculatedList;
 	}
 
 	public int getId() {
@@ -51,19 +52,19 @@ public class SubjectModel {
 		this.name = name;
 	}
 
-	public String getStudentsMatriculated() {
+	public int getStudentsMatriculated() {
 		return studentsMatriculated;
 	}
 
-	public void setStudentsMatriculated(String studentsMatriculated) {
+	public void setStudentsMatriculated(int studentsMatriculated) {
 		this.studentsMatriculated = studentsMatriculated;
 	}
 
-	public List<Integer> getMatriculatedStudents() {
-		return matriculatedStudents;
+	public ArrayList<Integer> getStudentsMatriculatedList() {
+		return studentsMatriculatedList;
 	}
 
-	public void setMatriculatedStudents(List<Integer> matriculatedStudents) {
-		this.matriculatedStudents = matriculatedStudents;
+	public void setStudentsMatriculatedList(ArrayList<Integer> studentsMatriculatedList) {
+		this.studentsMatriculatedList = studentsMatriculatedList;
 	}
 }
